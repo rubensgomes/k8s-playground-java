@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration
+   name="log4j2"
+   status="info"
+   strict="true"
+   xmlns="http://logging.apache.org/log4j/2.0/config"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config 
+                       https://raw.githubusercontent.com/apache/logging-log4j2/master/log4j-core/src/main/resources/Log4j-config.xsd">
+
+   <Properties>
+      <Property name="pattern">%d{ISO8601} %7sn %level{length=4} %c{1} - %m%ex%n</Property>
+   </Properties>
+
+   <Appenders>
+       <Console
+          name="CONSOLE_APPENDER"
+          target="SYSTEM_OUT">
+          <PatternLayout pattern="${pattern}" />
+       </Console>
+   </Appenders>
+
+   <Loggers>
+      <Root level="info">
+         <AppenderRef ref="CONSOLE_APPENDER" />
+      </Root>
+   </Loggers>
+
+</Configuration>

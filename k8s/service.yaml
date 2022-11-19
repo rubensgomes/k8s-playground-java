@@ -1,0 +1,17 @@
+# File     : deployment.yaml
+# Author   : Rubens Gomes
+# Purspose : Manifest file for the k8s-learning-ms service object configurations.
+# CLI      : mkctl apply -f ./service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+   name: k8s-learning-ms-entrypoint
+   namespace: default
+spec:
+   selector:
+      app: k8s-learning-ms
+   ports:
+   -  name: learn-svc-port
+      protocol: TCP
+      port: 80
+      targetPort: learn-cnt-port

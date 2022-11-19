@@ -1,0 +1,14 @@
+#
+# author : Rubens Gomes
+# purpose: docker compose configuration file
+#
+services:
+   k8s-learning-ms:
+      image: rubensgomes/k8s-learning-ms
+      container_name: k8s-learning-ms
+      hostname: k8s-learning-ms
+      ports:
+      # binds port 8080 on container to port 80 on the node.
+      - 80:8080
+      environment:
+      - PROFILE=dev

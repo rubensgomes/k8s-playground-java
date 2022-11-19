@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                            http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rubensgomes.pom.springboot</groupId>
+        <artifactId>springboot-app-pom</artifactId>
+        <version>1.1</version>
+    </parent>
+
+    <groupId>com.rubensgomes</groupId>
+    <artifactId>k8s-learning-ms</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <mainClass>com.rubensgomes.k8s.learning.K8sLearningApplication</mainClass>
+
+        <!-- delimiter that doesn't clash with Spring ${} placeholders -->
+        <resource.delimiter>@</resource.delimiter>
+
+        <springdoc.version>1.6.12</springdoc.version>
+        <!-- plugins -->
+        <formatter-maven-plugin.version>2.21.0</formatter-maven-plugin.version>
+        <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+    </properties>
+
+    <dependencies>
+        <!-- =============== scope: optional =============================== -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- =============== scope: compile ================================ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Used for validator annotations -->
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Used for utility coding -->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <!-- OpenAPI Annotations and render Swaggre-UI page -->
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+
+        <!-- =============== scope: provided ================================-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- =============== scope: runtime ================================ -->
+        <dependency>
+            <!-- Fix  No SLF4J providers were found. -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <!-- =============== scope: test =================================== -->
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>../docker/ctx/k8s-learning-ms</directory>
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                                <followSymlinks>false</followSymlinks>
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                </plugin>
+
+                <!-- ===========================================================
+                Plugins to generate "${project.artifactId}-openapi.json"
+
+                Following plugin need to be commented out so they do not
+                interfere with CI/CD plugin configurations.  Only uncomment in
+                local builds.
+
+                To generate the OpenAPI uncomment plugins and from CLI run 
+                "mvn clean verify".
+                =============================================================-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <jvmArguments>
+                        -Dspring.application.admin.enabled=true
+                        -Dspring.profiles.active=local
+                        </jvmArguments>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>spring-boot-pre-integration-test</id>
+                            <goals>
+                                <goal>start</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>spring-boot-post-integration-test</id>
+                            <goals>
+                                <goal>stop</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                    <version>${springdoc-openapi-maven-plugin.version}</version>
+                    <configuration>
+                        <outputFileName>${project.artifactId}-openapi.json</outputFileName>
+                        <skip>false</skip>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>TaR-generating-openapi</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>${formatter-maven-plugin.version}</version>
+                    <configuration>
+                        <skipCssFormatting>true</skipCssFormatting>
+                        <skipHtmlFormatting>true</skipHtmlFormatting>
+                        <skipJavaFormatting>true</skipJavaFormatting>
+                        <skipJsFormatting>true</skipJsFormatting>
+                        <skipJsonFormatting>false</skipJsonFormatting>
+                        <skipXmlFormatting>true</skipXmlFormatting>
+                        <directories>
+                            <directory>target</directory>
+                        </directories>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>TaR-formatting-generated-openapi-json</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>format</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- ===============================================================
+            ATTENTION:
+ 
+            Keep following plugins commented out.  Do NOT run plugins with CI/CD 
+            as it conflicts with Jacoco testing coverage and breaks the build.
+
+            * Uncomment and run below plugins when the REST API changes
+            * Run plugins locally only: "mvn clean verify"
+            * Copy target/${project.artifactId}-openapi.json to src/main/resources
+            =================================================================-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

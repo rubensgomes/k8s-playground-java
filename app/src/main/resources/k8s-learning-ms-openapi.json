@@ -1,0 +1,115 @@
+{
+    "openapi" : "3.0.1",
+    "info" : {
+        "title" : "Kubernetes Learning Micro Service",
+        "description" : "A simple application used to be deployed in K8s",
+        "contact" : {
+            "name" : "Rubens Gomes",
+            "url" : "https://rubensgomes.com",
+            "email" : "rubens.s.gomes@gmail.com"
+        },
+        "version" : "0.0.1"
+    },
+    "servers" : [
+        {
+            "url" : "http://localhost:8080",
+            "description" : "Local Developer Workspace Server"
+        },
+        {
+            "url" : "https://{env}-k8s-learning-ms.{tlsId}.{region}.containers.appdomain.cloud",
+            "description" : "Kubernetes Servers",
+            "variables" : {
+                "env" : {
+                    "description" : "environment (DEV/STAGE/PROD)",
+                    "default" : "server-default",
+                    "enum" : [
+                        "server-dal",
+                        "server-nyc"
+                    ]
+                },
+                "tlsId" : {
+                    "description" : "TLS ID",
+                    "default" : "cluster-id-01",
+                    "enum" : [
+                        "cluster-id-02",
+                        "cluster-id-03"
+                    ]
+                },
+                "region" : {
+                    "description" : "cluster region location",
+                    "default" : "us-south",
+                    "enum" : [
+                        "us-south",
+                        "us-east"
+                    ]
+                }
+            }
+        }
+    ],
+    "tags" : [
+        {
+            "name" : "msg",
+            "description" : "a dummy msg operation."
+        }
+    ],
+    "paths" : {
+        "/api/k8slearning" : {
+            "post" : {
+                "tags" : [
+                    "msg"
+                ],
+                "summary" : "Dummy msg operation to exercise controller and service",
+                "description" : "Simply returns the same message back to consumer.",
+                "operationId" : "msg",
+                "requestBody" : {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "$ref" : "#/components/schemas/K8sLearningRequest"
+                            }
+                        }
+                    },
+                    "required" : true
+                },
+                "responses" : {
+                    "200" : {
+                        "description" : "OK",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "$ref" : "#/components/schemas/K8sLearningResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components" : {
+        "schemas" : {
+            "K8sLearningRequest" : {
+                "required" : [
+                    "input"
+                ],
+                "type" : "object",
+                "properties" : {
+                    "input" : {
+                        "type" : "string"
+                    }
+                }
+            },
+            "K8sLearningResponse" : {
+                "required" : [
+                    "output"
+                ],
+                "type" : "object",
+                "properties" : {
+                    "output" : {
+                        "type" : "string"
+                    }
+                }
+            }
+        }
+    }
+}

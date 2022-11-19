@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+File     : settings.xml
+Author   : Rubens Gomes <rubens.s.gomes@gmail.com>
+Purpose  : This file should be installed in your local maven repository folder (.m2).
+           It contains settings used by maven during the build to be able to pull
+           some of my own library and build files.
+-->
+<settings
+   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
+                       http://maven.apache.org/xsd/settings-1.1.0.xsd"
+   xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <!-- Ensure this file is placed at local maven repo as  ".m2/settings.xml" -->
+
+   <profiles>
+
+      <profile>
+         <id>rg</id>
+
+         <properties>
+            <myMavenRepo.read.url>https://mymavenrepo.com/repo/lbHqv9mS0nOi6tV1TbzF/</myMavenRepo.read.url>
+            <myMavenRepo.write.url>https://mymavenrepo.com/repo/7FlqHiEzj6RRvMdznYj0/</myMavenRepo.write.url>
+         </properties>
+
+         <repositories>
+
+            <repository>
+               <id>central</id>
+               <snapshots>
+                  <enabled>false</enabled>
+               </snapshots>
+               <url>https://repo1.maven.org/maven2/</url>
+            </repository>
+
+            <repository>
+               <id>myMavenRepo.release.repo</id>
+               <snapshots>
+                  <enabled>false</enabled>
+               </snapshots>
+               <url>https://mymavenrepo.com/repo/7FlqHiEzj6RRvMdznYj0/</url>
+            </repository>
+
+            <repository>
+               <id>myMavenRepo.snapshot.repo</id>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+               <url>https://mymavenrepo.com/repo/7FlqHiEzj6RRvMdznYj0/</url>
+            </repository>
+
+            <repository>
+               <id>apache.snapshots</id>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+               <url>https://repository.apache.org/snapshots</url>
+            </repository>
+
+         </repositories>
+
+      </profile>
+   </profiles>
+
+   <activeProfiles>
+      <activeProfile>rg</activeProfile>
+   </activeProfiles>
+
+</settings>
+

@@ -1,0 +1,30 @@
+# File     : deployment.yaml
+# Author   : Rubens Gomes
+# Purspose : Manifest file for the k8s-learning-ms deployment object configurations.
+# CLI      : mkctl apply -f ./deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: k8s-learning-ms-deployment
+   namespace: default
+   labels:
+      app: k8s-learning-ms
+spec:
+   replicas: 2
+   selector:
+      matchLabels:
+         app: k8s-learning-ms
+   template:
+      metadata:
+         labels:
+            app: k8s-learning-ms
+      spec:
+         containers:
+         -  name: k8s-learning-ms
+            image: rubensgomes/k8s-learning-ms:latest
+            env:
+            -  name: PROFILE
+               value: dev
+            ports:
+            -  name: learn-cnt-port
+               containerPort: 8080

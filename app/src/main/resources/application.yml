@@ -1,0 +1,44 @@
+spring:
+   application:
+      name: ticket-manager-ms
+logging:
+   config: classpath:log4j2.xml
+server:
+   # this port is the tomcat server port in deployed environment
+   # do NOT change as this is part of the OpenAPI port for localhost
+   # Also, this port is required by cloud actuators to monitor this service
+   port: 8080
+---
+###################### >>> PROD <<< ############################################
+spring:
+   config:
+      activate:
+         on-profile: prod
+---
+###################### >>> STAGE <<< ###########################################
+spring:
+   config:
+      activate:
+         on-profile: stage
+---
+###################### >>> QA <<< ##############################################
+spring:
+   config:
+      activate:
+         on-profile: qa
+---
+###################### >>> DEV <<< #@@##########################################
+spring:
+   config:
+      activate:
+         on-profile: dev
+---
+###################### >>> LOCAL or TEST <<< ###################################
+spring:
+   config:
+      activate:
+         on-profile: local | test
+local:
+   server:
+      # this port is used in "local" profile and for testing only.
+      port: 8080
