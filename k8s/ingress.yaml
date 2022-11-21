@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+   name: k8s-learning-ms-ingress
+spec:
+   rules:
+   -  host: rubens-vm.mshome.net
+      http:
+         paths:
+         -  path: /
+            pathType: Prefix
+            backend:
+               service:
+                  name: k8s-learning-ms-service
+                  port:
+                     number: 80

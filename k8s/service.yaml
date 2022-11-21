@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-   name: k8s-learning-ms-entrypoint
+   name: k8s-learning-ms-service
    namespace: default
 spec:
    selector:
@@ -15,3 +15,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: learn-cnt-port
+   type: ClusterIP
