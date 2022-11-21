@@ -9,16 +9,16 @@ The following are some handy commands that I use in my Ubuntu Linux VM Single
 Node MicroK8s Kubernetes installation:
 
 ```bash
-microk8s stop
-microk8s start
-microk8s status --wait-ready
-microk8s enable dashboard dns ingress
-microk8s disable dns
-microk8s disable ingress
 microk8s config
 microk8s config --help
-microk8s inspect
 microk8s dashboard-proxy
+microk8s disable dns
+microk8s disable ingress
+microk8s enable dashboard dns ingress
+microk8s inspect
+microk8s status --wait-ready
+microk8s start
+microk8s stop
 ```
 
 ## Install and Set Up kubectl on Linux
@@ -50,6 +50,7 @@ mkctl cluster-info dump
 mkctl delete deploy <k8slearn-deployment>
 mkctl delete -f deployment.yaml
 mkctl describe deployment -A
+mkctl describe node
 mkctl get all --all-namespaces
 mkctl get deploy -A
 mkctl get pods -A
@@ -85,12 +86,17 @@ sudo docker login -urubensgomes docker.io
 mkctl apply -f ./deployment.yaml
 ```
 
-- Set up a service end-point for the application as follows:
+- Set up a service for the application as follows:
 
 ```bash
 mkctl apply -f ./service.yaml
 ```
 
+- Set up a ingress for the service as follows:
+
+```bash
+mkctl apply -f ./ingress.yaml
+```
 
 
 ---
