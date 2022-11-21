@@ -98,6 +98,15 @@ mkctl apply -f ./service.yaml
 mkctl apply -f ./ingress.yaml
 ```
 
+## Testing Application End Point
+
+Once the application is deployed in kubernetes, and a service end-point
+and ingress are configured, you may test the application by landing on
+its Swagger page as follows:
+
+
+<http://rubens-vm.mshome.net/>
+
 
 ---
 [Rubens Gomes](https://rubensgomes.com/)
