@@ -60,7 +60,7 @@ I created a simple Java Spring Boot microservice to deploy and run on my single
 MicroK8s Kubernetes.   I built a docker containerized image using my own 
 "build.sh" and Dockerfile.  For more information about the application files,
 configuration and how the containerized image was created refer to the folder
-[./app](./APP.md).
+[APP.md](./APP.md).
 
 In addition to developing a simple Spring Boot microservice application, I also
 wrote a [build.sh](./docker/build.sh) shell script to create a containerized
