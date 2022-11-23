@@ -18,7 +18,7 @@ docker first.  Docker is a tool that provides a way to create standard
 containerized images, and run those containerized images in the local machine.
 Kubernetes is able to use docker created containerized images during deployment
 and run of application in an isolated containerized environment.
-For more details refer to [docker folder](../docker/README.md).
+For more details refer to [docker folder](./docker/README.md).
 
 ## Running App from IDE
 
@@ -63,7 +63,7 @@ In order to deploy the application in Kubernetes we first need to create what is
 called a "containerized application image" file.  This file is a package containing
 the application code, libraries, Java VM, and minimum operating system files required
 to run the Java VM and the application.  For more information about the steps to
-create this containerized image go to [here](../docker/README.md).
+create this containerized image go to [here](./docker/README.md).
 
 ---
 [Rubens Gomes](https://rubensgomes.com/)
