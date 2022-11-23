@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Registers a {@link ViewControllerRegistry} to render the Swagger page.
- * 
+ *
  * @author Rubens Gomes
  */
 @Slf4j

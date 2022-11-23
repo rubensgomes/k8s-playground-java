@@ -9,7 +9,7 @@ import com.rubensgomes.k8s.learning.model.K8sLearningResponse;
 
 /**
  * {@link K8sLearningServiceTest} unit test class.
- * 
+ *
  * @author Rubens Gomes
  */
 class K8sLearningServiceTest

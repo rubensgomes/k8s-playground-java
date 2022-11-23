@@ -17,9 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 //@formatter:off
 @OpenAPIDefinition
 (
-   info = 
+   info =
      @Info
-     ( 
+     (
         title       = "Kubernetes Learning Micro Service",
         description = "A simple application used to be deployed in K8s",
         contact     = @Contact
@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
                       ),
         version     = "0.0.1"
      ),
-   
+
    servers =
    {
      @Server

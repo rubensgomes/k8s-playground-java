@@ -23,7 +23,7 @@ import com.rubensgomes.k8s.learning.service.K8sLearningService;
 
 /**
  * {@link K8sLearningRestController} unit test class.
- * 
+ *
  * @author Rubens Gomes
  */
 @ActiveProfiles( "test" )

@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * {@link K8sLearningService} is a service layer class used by the K8S learning
  * application.
- * 
+ *
  * @author Rubens Gomes
  */
 @Slf4j
