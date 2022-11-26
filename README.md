@@ -1,7 +1,8 @@
-# k8s-learning
+# kubernetes-learn-java
 
-A Kubernetes Learning Playground Project.  This learning project comprises
-basically of the following tasks:
+A Java learning playground project to learn and experiment with Kubernetes.
+
+This learning project comprises basically of the following tasks:
 
 - Set up an Ubuntu VM on Windows 10 using Hyper-V.
 - Install a single node Kubernetes MicroK8s on Ubuntu VM. This steps creates a
