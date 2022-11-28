@@ -1,4 +1,4 @@
-package com.rubensgomes.k8s.learning;
+package com.rubensgomes.k8s;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.rubensgomes.k8s.learning.service.K8sLearningService;
+import com.rubensgomes.k8s.service.K8sLearningService;
 
 @ActiveProfiles( "test" )
 @SpringBootTest

@@ -1,4 +1,4 @@
-package com.rubensgomes.k8s.learning.config;
+package com.rubensgomes.k8s.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;

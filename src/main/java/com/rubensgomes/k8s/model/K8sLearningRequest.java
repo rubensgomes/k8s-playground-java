@@ -1,4 +1,4 @@
-package com.rubensgomes.k8s.learning.model;
+package com.rubensgomes.k8s.model;
 
 import javax.validation.constraints.NotBlank;
 
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * {@link K8sLearningResponse} is a simple response used in HTTP POST responses.
+ * {@link K8sLearningRequest} is a simple request used in HTTP POST request.
  *
  * @author Gomes, Rubens <Rubens.S.Gomes@gmail.com>
  */
@@ -16,8 +16,8 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode
-public class K8sLearningResponse
+public class K8sLearningRequest
 {
-   @NotBlank( message = "output cannot be null or blank" )
-   private String output;
+   @NotBlank( message = "input cannot be null or blank" )
+   private String input;
 }

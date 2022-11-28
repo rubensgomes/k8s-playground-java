@@ -1,4 +1,4 @@
-package com.rubensgomes.k8s.learning.config;
+package com.rubensgomes.k8s.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

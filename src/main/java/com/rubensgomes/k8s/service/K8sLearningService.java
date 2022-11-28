@@ -1,10 +1,10 @@
-package com.rubensgomes.k8s.learning.service;
+package com.rubensgomes.k8s.service;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
-import com.rubensgomes.k8s.learning.model.K8sLearningRequest;
-import com.rubensgomes.k8s.learning.model.K8sLearningResponse;
+import com.rubensgomes.k8s.model.K8sLearningRequest;
+import com.rubensgomes.k8s.model.K8sLearningResponse;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,11 +1,12 @@
-package com.rubensgomes.k8s.learning.service;
+package com.rubensgomes.k8s.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.rubensgomes.k8s.learning.model.K8sLearningRequest;
-import com.rubensgomes.k8s.learning.model.K8sLearningResponse;
+import com.rubensgomes.k8s.model.K8sLearningRequest;
+import com.rubensgomes.k8s.model.K8sLearningResponse;
+import com.rubensgomes.k8s.service.K8sLearningService;
 
 /**
  * {@link K8sLearningServiceTest} unit test class.

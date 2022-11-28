@@ -1,4 +1,4 @@
-package com.rubensgomes.k8s.learning;
+package com.rubensgomes.k8s;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

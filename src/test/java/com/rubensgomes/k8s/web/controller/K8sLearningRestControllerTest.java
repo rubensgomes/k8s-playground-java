@@ -1,4 +1,4 @@
-package com.rubensgomes.k8s.learning.web.controller;
+package com.rubensgomes.k8s.web.controller;
 
 import java.net.URI;
 
@@ -18,8 +18,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.rubensgomes.k8s.learning.model.K8sLearningResponse;
-import com.rubensgomes.k8s.learning.service.K8sLearningService;
+import com.rubensgomes.k8s.model.K8sLearningResponse;
+import com.rubensgomes.k8s.service.K8sLearningService;
+import com.rubensgomes.k8s.web.controller.K8sLearningRestController;
 
 /**
  * {@link K8sLearningRestController} unit test class.

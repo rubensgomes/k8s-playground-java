@@ -12,9 +12,9 @@
         <version>1.4</version>
     </parent>
 
-    <groupId>com.rubensgomes</groupId>
+    <groupId>com.rubensgomes.k8s</groupId>
     <artifactId>k8s-learning-ms</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <packaging>jar</packaging>
 
     <properties>
